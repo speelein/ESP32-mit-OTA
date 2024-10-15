@@ -1,0 +1,28 @@
+sudo: false
+language: c
+os: linux
+
+git:
+  depth: false
+
+cache:
+  directories:
+    - "~/.platformio"
+
+jobs:
+  include:
+    - name: "Arduino ESP8266"
+      env: SCRIPT=arduino VERSION=1.8.11 BOARD=esp8266:esp8266:generic:xtal=80,eesz=4M1M,FlashMode=qio,FlashFreq=80,dbg=Serial,lvl=CORE
+    - name: "Arduino ESP32"
+      env: SCRIPT=arduino VERSION=1.8.11 BOARD=esp32:esp32:esp32:FlashFreq=80,FlashSize=4M,DebugLevel=info
+    - name: "PlatformIO ESP8266"
+      env: SCRIPT=platformio BOARD=esp_wroom_02
+    - name: "PlatformIO ESP32"
+      env: SCRIPT=platformio BOARD=esp32dev
+
+script: travis/$SCRIPT.sh
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

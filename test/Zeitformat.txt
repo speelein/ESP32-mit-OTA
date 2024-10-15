@@ -1,0 +1,12 @@
+Ganz unten auf der Seite Bildschirmausgaben | C-HowTo 1 findest du Hinweise, wie du elegant die Null durch Formatierung der Ausgabe bekommst.
+
+    Sollen beim Auffüllen keine Leerzeichen, sondern führende Nullen verwendet werden, erreichen wir dies mit einer Null nach %, also %0. In diesem Beispiel sind die Variablenwerte tag und monat einstellig, zweistellig wird es mit einer führenden Null.
+
+    int tag=3, monat=9, jahr=2007;
+
+printf("Ein Datum: %02d.%02d.%4d\n", tag, monat, jahr);
+
+
+
+    Ein Datum: 03.09.2007
+

@@ -264,7 +264,15 @@ void loop()
   // fuer Darstellung auf Display
   int st = std;
   int mi = mini;
+  int isDST = tstruct.tm_isdst; // Check if DST is active vielleicht mit int davor
 
+  if (isDST == 1) {
+      Serial.println("Daylight saving time is active.");
+  } else if (isDST == 0) {
+      Serial.println("Standard time (wintertime) is active.");
+  } else {
+      Serial.println("DST information is not available.");
+  }
   // Ausgabe Serial
   Serial.println(std);
 
